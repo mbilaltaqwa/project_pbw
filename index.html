@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Kelompok</title>
+    <style>
+        /* STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        
+        .content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .profile-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .profile-picture {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 5px solid #3498db;
+        }
+        
+        .profile-name {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-role {
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+        }
+        
+        .bio-section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .schedule-table th, .schedule-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .schedule-table th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .schedule-table tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .contact-form {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .profile-picture {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .schedule-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Portofolio Kelompok</div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('page1')">kamal</a></li>
+                <li><a href="#" onclick="showPage('page2')">apri</a></li>
+                <li><a href="#" onclick="showPage('page3')">Rafi</a></li>
+                <li><a href="#" onclick="showPage('page4')">bilal</a></li>
+                <li><a href="#" onclick="showPage('page5')">linggar</a></li>
+                <li><a href="#" onclick="showPage('page6')">Ravlyansyah</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="page1" class="page active">
+        <div class="content">
+            <div class="profile-card">
+                <img src="https://placeholder-image-service.onrender.com/image/200x200?prompt=Portrait of a professional Indonesian man with short hair, wearing formal attire&id=ahmad1" 
+                     alt="Foto formal Ahmad dengan latar belakang netral" class="profile-picture">
+                <h1 class="profile-name">Muhammad Kamal Ibrahim</h1>
+                <p class="profile-role">Mahasiswa Teknik Informatika</p>
+            </div>
+            
+            <div class="bio-section">
+                <h2 class="section-title">Biodata</h2>
+                <p><strong>Tanggal Lahir:</strong> 15 April 2001</p>
+                <p><strong>Alamat:</strong> Jl. Merdeka No. 123, Jakarta</p>
+                <p><strong>Email:</strong> Kamal.wijaya@email.com</p>
+                <p><strong>Pendidikan:</strong> Universitas Muhammadiyah Jakarta, Teknik Informatika</p>
+                <p><strong>Minat:</strong> Pengembangan Web, Artificial Intelligence, Data Science</p>
+                <p><strong>Deskripsi:</strong> kamal adalah mahasiswa berprestasi dengan ketertarikan mendalam pada teknologi terkini. 
+                    Ia aktif dalam organisasi kemahasiswaan dan telah mengikuti berbagai kompetisi pemrograman.</p>
+            </div>
+            
+            <div class="bio-section">
+                <h2 class="section-title">Jadwal Kuliah</h2>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Hari</th>
+                            <th>Mata Kuliah</th>
+                            <th>Waktu</th>
+                            <th>Ruangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Senin</td>
+                            <td>Pemrograman Web</td>
+                            <td>08:00 - 10:00</td>
+                            <td>R. 301</td>
+                        </tr>
+                        <tr>
+                            <td>Selasa</td>
+                            <td>Basis Data</td>
+                            <td>10:00 - 12:00</td>
+                            <td>R. 205</td>
+                        </tr>
+                        <tr>
+                            <td>Rabu</td>
+                            <td>Jaringan Komputer</td>
+                            <td>13:00 - 15:00</td>
+                            <td>Lab. Jaringan</td>
+                        </tr>
+                        <tr>
+                            <td>Kamis</td>
+                            <td>Kecerdasan Buatan</td>
+                            <td>09:00 - 11:00</td>
+                            <td>R. 402</td>
+                        </tr>
+                        <tr>
+                            <td>Jumat</td>
+                            <td>Etika Profesi</td>
+                            <td>14:00 - 16:00</td>
+                            <td>R. 101</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="contact-form">
+                <h2 class="section-title">Hubungi kamal</h2>
+                <form id="formkamal">
+                    <div class="form-group">
+                        <label for="nameAhmad">Nama Lengkap</label>
+                        <input type="text" id="nameAhmad" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailAhmad">Email</label>
+                        <input type="email" id="emailAhmad" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subjectAhmad">Subjek</label>
+                        <input type="text" id="subjectAhmad" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="messageAhmad">Pesan</label>
+                        <textarea id="messageAhmad" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="page2" class="page">
+        <div class="content">
+            <div class="profile-card">
+                <img src="https://placeholder-image-service.onrender.com/image/200x200?prompt=Portrait of a professional Indonesian woman with hijab, smiling warmly&id=siti1" 
+                     alt="Foto Siti dengan kerudung dan senyuman ramah" class="profile-picture">
+                <h1 class="profile-name">Apri baroka</h1>
+                <p class="profile-role">nahasiswa Informatika</p>
+            </div>
+            
+            <div class="bio-section">
+                <h2 class="section-title">Biodata</h2>
+                <p><strong>Tanggal Lahir:</strong> 22 Mei 2002</p>
+                <p><strong>Alamat:</strong> Jl. Melati No. 45, Bandung</p>
+                <p><strong>Email:</strong> Apribaroka@email.com</p>
+                <p><strong>Pendidikan:</strong> UMj,informatika</p>
+                <p><strong>Minat:</strong> Desain Grafis, Ilustrasi, Fotografi</p>
+                <p><strong>Deskripsi:</strong> apri adalah mahasiswa kreatif dengan bakat dalam seni visual. 
+                    Karya-karyanya telah dipamerkan dalam beberapa pameran seni kampus dan ia aktif dalam komunitas desain.</p>
+            </div>
+            
+            <div class="bio-section">
+                <h2 class="section-title">Jadwal Kuliah</h2>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Hari</th>
+                            <th>Mata Kuliah</th>
+                            <th>Waktu</th>
+                            <th>Ruangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Senin</td>
+                            <td>Tipografi</td>
+                            <td>10:00 - 12:00</td>
+                            <td>Studio DKV</td>
+                        </tr>
+                        <tr>
+                            <td>Selasa</td>
+                            <td>Desain Grafis</td>
+                            <td>13:00 - 15:00</td>
+                            <td>Lab. Komputer</td>
+                        </tr>
+                        <tr>
+                            <td>Rabu</td>
+                            <td>Fotografi</td>
+                            <td>08:00 - 10:00</td>
+                            <td>Studio Foto</td>
+                        </tr>
+                        <tr>
+                            <td>Kamis</td>
+                            <td>Sejarah Seni</td>
+                            <td>14:00 - 16:00</td>
+                            <td>R. 203</td>
+                        </tr>
+                        <tr>
+                            <td>Jumat</td>
+                            <td>Desain Web</td>
+                            <td>09:00 - 11:00</td>
+                            <td>Lab. Multimedia</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="contact-form">
+                <h2 class="section-title">Hubungi apri</h2>
+                <form id="formApri">
+                    <div class="form-group">
+                        <label for="nameApri">Nama Lengkap</label>
+                        <input type="text" id="nameApri" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailApri">Email</label>
+                        <input type="email" id="emailApri" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subjectSiti">Subjek</label>
+                        <input type="text" id="subjectSiti" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="messageSiti">Pesan</label>
+                        <textarea id="messageSiti" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="page3" class="page">
+        <div class="content">
+            <div class="profile-card">
+                <img src="https://placeholder-image-service.onrender.com/image/200x200?prompt=Portrait of a professional Indonesian man with glasses, looking intelligent&id=budi1" 
+                     alt="Foto Budi dengan kacamata dan tampilan cerdas" class="profile-picture">
+                <h1 class="profile-name">Rafi Hakim</h1>
+                <p class="profile-role">Mahasiswa informatika</p>
+            </div>
+            
+            <div class="bio-section">
+                <h2 class="section-title">Biodata</h2>
+                <p><strong>Tanggal Lahir:</strong> 10 Agustus 2000</p>
+                <p><strong>Alamat:</strong> Jl. Anggrek No. 78, Surabaya</p>
+                <p><strong>Email:</strong> hakimrafi@email.com</p>
+                <p><strong>Pendidikan:</strong> UMJ,informatika</p>
+                <p><strong>Minat:</strong> Ekonomi Makro, Analisis Pasar, Entrepreneurship</p>
+                <p><strong>Deskripsi:</strong> rafi adalah mahasiswa ekonomi yang memiliki ketertarikan pada dunia bisnis dan investasi. 
+                    Ia aktif dalam berbagai seminar ekonomi dan telah memenangkan beberapa kompetisi bisnis plan.</p>
+            </div>
+            
+            <div class="bio-section">
+                <h2 class="section-title">Jadwal Kuliah</h2>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Hari</th>
+                            <th>Mata Kuliah</th>
+                            <th>Waktu</th>
+                            <th>Ruangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Senin</td>
+                            <td>Ekonomi Makro</td>
+                            <td>08:00 - 10:00</td>
+                            <td>R. 105</td>
+                        </tr>
+                        <tr>
+                            <td>Selasa</td>
+                            <td>Manajemen Keuangan</td>
+                            <td>10:00 - 12:00</td>
+                            <td>R. 205</td>
+                        </tr>
+                        <tr>
+                            <td>Rabu</td>
+                            <td>Perpajakan</td>
+                            <td>13:00 - 15:00</td>
+                            <td>R. 302</td>
+                        </tr>
+                        <tr>
+                            <td>Kamis</td>
+                            <td>Ekonomi Internacional</td>
+                            <td>09:00 - 11:00</td>
+                            <td>R. 401</td>
+                        </tr>
+                        <tr>
+                            <td>Jumat</td>
+                            <td>Kewirausahaan</td>
+                            <td>14:00 - 16:00</td>
+                            <td>R. 201</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="contact-form">
+                <h2 class="section-title">Hubungi rafi</h2>
+                <form id="formRafi">
+                    <div class="form-group">
+                        <label for="nameBudi">Nama Lengkap</label>
+                        <input type="text" id="nameBudi" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailBudi">Email</label>
+                        <input type="email" id="emailBudi" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subjectBudi">Subjek</label>
+                        <input type="text" id="subjectBudi" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="messageBudi">Pesan</label>
+                        <textarea id="messageBudi" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="page4" class="page">
+        <div class="content">
+            <div class="profile-card">
+                <img src="https://placeholder-image-service.onrender.com/image/200x200?prompt=Portrait of a professional Indonesian woman with long hair and friendly smile&id=dewi1" 
+                     alt="Foto  dengan senyuman ramah dan ekspresi bersahabat" class="profile-picture">
+                <h1 class="profile-name">muhammad bilal taqwa</h1>
+                <p class="profile-role">mahasiswa informatika</p>
+            </div>
+            
+            <div class="bio-section">
+                <h2 class="section-title">Biodata</h2>
+                <p><strong>Tanggal Lahir:</strong> 3 Juli 2001</p>
+                <p><strong>Alamat:</strong> Jl. Mawar No. 56, Yogyakarta</p>
+                <p><strong>Email:</strong> dewi.lestari@email.com</p>
+                <p><strong>Pendidikan:</strong> UMJ,informatika</p>
+                <p><strong>Minat:</strong> Psikologi Klinis, Konseling, Psikologi Perkembangan</p>
+                <p><strong>Deskripsi:</strong> bilal adalah mahasiswa yang memiliki kepedulian tinggi terhadap kesehatan mental. 
+                    Ia aktif dalam kegiatan sukarela yang berfokus pada dukungan mental remaja dan telah mengikuti berbagai pelatihan konseling.</p>
+            </div>
+            
+            <div class="bio-section">
+                <h2 class="section-title">Jadwal Kuliah</h2>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Hari</th>
+                            <th>Mata Kuliah</th>
+                            <th>Waktu</th>
+                            <th>Ruangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Senin</td>
+                            <td>Psikologi Umum</td>
+                            <td>08:00 - 10:00</td>
+                            <td>R. 102</td>
+                        </tr>
+                        <tr>
+                            <td>Selasa</td>
+                            <td>Psikologi Perkembangan</td>
+                            <td>10:00 - 12:00</td>
+                            <td>R. 205</td>
+                        </tr>
+                        <tr>
+                            <td>Rabu</td>
+                            <td>Psikodiagnostik</td>
+                            <td>13:00 - 15:00</td>
+                            <td>Lab. Psikologi</td>
+                        </tr>
+                        <tr>
+                            <td>Kamis</td>
+                            <td>Konseling</td>
+                            <td>09:00 - 11:00</td>
+                            <td>R. 301</td>
+                        </tr>
+                        <tr>
+                            <td>Jumat</td>
+                            <td>Psikologi Klinis</td>
+                            <td>14:00 - 16:00</td>
+                            <td>R. 402</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="contact-form">
+                <h2 class="section-title">Hubungi bilal</h2>
+                <form id="formBilal">
+                    <div class="form-group">
+                        <label for="nameDewi">Nama Lengkap</label>
+                        <input type="text" id="nameDewi" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailDewi">Email</label>
+                        <input type="email" id="emailDewi" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subjectDewi">Subjek</label>
+                        <input type="text" id="subjectDewi" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="messageDewi">Pesan</label>
+                        <textarea id="messageDewi" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="page5" class="page">
+        <div class="content">
+            <div class="profile-card">
+                <img src="https://placeholder-image-service.onrender.com/image/200x200?prompt=Portrait of a professional Indonesian man with trendy style and confident expression&id=rizky1" 
+                     alt="Foto Linnggar dengan gaya modern dan ekspresi percaya diri" class="profile-picture">
+                <h1 class="profile-name">muhammad linggar givary</h1>
+                <p class="profile-role">Mahasiswa informatika</p>
+            </div>
+            
+            <div class="bio-section">
+                <h2 class="section-title">Biodata</h2>
+                <p><strong>Tanggal Lahir:</strong> 18 November 2002</p>
+                <p><strong>Alamat:</strong> Jl. Kenanga No. 34, Medan</p>
+                <p><strong>Email:</strong> rizky.pratama@email.com</p>
+                <p><strong>Pendidikan:</strong> Universitas Sumatera Utara, Ilmu Komunikasi</p>
+                <p><strong>Minat:</strong> Public Relations, Jurnalistik, Media Digital</p>
+                <p><strong>Deskripsi:</strong> linggar adalah mahasiswa informatika dengan bakat dalam public speaking dan penulisan. 
+                    Ia aktif dalam organisasi pers kampus dan telah menjadi moderator dalam berbagai acara diskusi.</p>
+            </div>
+            
+            <div class="bio-section">
+                <h2 class="section-title">Jadwal Kuliah</h2>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Hari</th>
+                            <th>Mata Kuliah</th>
+                            <th>Waktu</th>
+                            <th>Ruangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Senin</td>
+                            <td>Teori Komunikasi</td>
+                            <td>08:00 - 10:00</td>
+                            <td>R. 201</td>
+                        </tr>
+                        <tr>
+                            <td>Selasa</td>
+                            <td>Jurnalistik</td>
+                            <td>10:00 - 12:00</td>
+                            <td>R. 305</td>
+                        </tr>
+                        <tr>
+                            <td>Rabu</td>
+                            <td>Public Relations</td>
+                            <td>13:00 - 15:00</td>
+                            <td>R. 102</td>
+                        </tr>
+                        <tr>
+                            <td>Kamis</td>
+                            <td>Komunikasi Digital</td>
+                            <td>09:00 - 11:00</td>
+                            <td>Lab. Komputer</td>
+                        </tr>
+                        <tr>
+                            <td>Jumat</td>
+                            <td>Penulisan Kreatif</td>
+                            <td>14:00 - 16:00</td>
+                            <td>R. 401</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="contact-form">
+                <h2 class="section-title">Hubungi linggar</h2>
+                <form id="formLinggar">
+                    <div class="form-group">
+                        <label for="nameRizky">Nama Lengkap</label>
+                        <input type="text" id="nameRizky" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailRizky">Email</label>
+                        <input type="email" id="emailRizky" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subjectRizky">Subjek</label>
+                        <input type="text" id="subjectRizky" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="messageRizky">Pesan</label>
+                        <textarea id="messageRizky" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="page6" class="page">
+        <div class="content">
+            <div class="profile-card">
+                <img src="https://placeholder-image-service.onrender.com/image/200x200?prompt=Portrait of an Indonesian man, dark hair, professional, serious expression&id=ravly1" 
+                     alt="Foto Ravlyansyah dengan ekspresi serius dan profesional" class="profile-picture">
+                <h1 class="profile-name">Ravlyansyah</h1>
+                <p class="profile-role">Mahasiswa Teknik Informatika</p>
+            </div>
+            
+            <div class="bio-section">
+                <h2 class="section-title">Biodata</h2>
+                <p><strong>Tanggal Lahir:</strong> 5 Januari 2002</p>
+                <p><strong>Alamat:</strong> Jl. Damai No. 88, Bogor</p>
+                <p><strong>Email:</strong> ravlyansyah.official@email.com</p>
+                <p><strong>Pendidikan:</strong> Universitas Muhammadiyah Jakarta, Teknik Informatika</p>
+                <p><strong>Minat:</strong> Ethical Hacking, Keamanan Jaringan, Cloud Computing</p>
+                <p><strong>Deskripsi:</strong> Ravlyansyah adalah mahasiswa yang antusias dengan fokus pada keamanan siber dan infrastruktur teknologi. 
+                    Ia aktif mengikuti *bootcamp* dan sertifikasi di bidang *network security*.</p>
+            </div>
+            
+            <div class="bio-section">
+                <h2 class="section-title">Jadwal Kuliah</h2>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Hari</th>
+                            <th>Mata Kuliah</th>
+                            <th>Waktu</th>
+                            <th>Ruangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Senin</td>
+                            <td>Arsitektur Komputer</td>
+                            <td>10:00 - 12:00</td>
+                            <td>R. 303</td>
+                        </tr>
+                        <tr>
+                            <td>Selasa</td>
+                            <td>Keamanan Jaringan</td>
+                            <td>13:00 - 15:00</td>
+                            <td>Lab. Keamanan</td>
+                        </tr>
+                        <tr>
+                            <td>Rabu</td>
+                            <td>Pemrograman Berorientasi Objek</td>
+                            <td>08:00 - 10:00</td>
+                            <td>R. 202</td>
+                        </tr>
+                        <tr>
+                            <td>Kamis</td>
+                            <td>Cloud Computing</td>
+                            <td>14:00 - 16:00</td>
+                            <td>Lab. Komputer</td>
+                        </tr>
+                        <tr>
+                            <td>Jumat</td>
+                            <td>Analisis Algoritma</td>
+                            <td>09:00 - 11:00</td>
+                            <td>R. 403</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="contact-form">
+                <h2 class="section-title">Hubungi Ravlyansyah</h2>
+                <form id="formRavlyansyah">
+                    <div class="form-group">
+                        <label for="nameRavlyansyah">Nama Lengkap</label>
+                        <input type="text" id="nameRavlyansyah" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailRavlyansyah">Email</label>
+                        <input type="email" id="emailRavlyansyah" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subjectRavlyansyah">Subjek</label>
+                        <input type="text" id="subjectRavlyansyah" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="messageRavlyansyah">Pesan</label>
+                        <textarea id="messageRavlyansyah" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Portofolio Kelompok. Semua Hak Dilindungi.</p>
+    </footer>
+
+    <script>
+        // JavaScript untuk navigasi antar halaman
+        function showPage(pageId) {
+            // Sembunyikan semua halaman
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Tampilkan halaman yang dipilih
+            document.getElementById(pageId).classList.add('active');
+        }
+        
+        // Event listeners untuk form submission
+        document.getElementById('formkamal').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Pesan untuk kamal dikirim!'); // Updated alert message for clarity
+            this.reset();
+        });
+        
+        document.getElementById('formApri').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Pesan untuk apri dikirim!'); // Updated alert message for clarity
+            this.reset();
+        });
+        
+        document.getElementById('formRafi').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Pesan untuk rafi dikirim!'); // Updated alert message for clarity
+            this.reset();
+        });
+        
+        document.getElementById('formBilal').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Pesan untuk bilal dikirim!'); // Updated alert message for clarity
+            this.reset();
+        });
+        
+        document.getElementById('formLinggar').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Pesan untuk linggar dikirim!'); // Updated alert message for clarity
+            this.reset();
+        });
+
+        // NEW MEMBER FORM EVENT LISTENER
+        document.getElementById('formRavlyansyah').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Pesan untuk Ravlyansyah dikirim!');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
